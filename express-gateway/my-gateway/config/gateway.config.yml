@@ -7,13 +7,22 @@ apiEndpoints:
   api:
     host: localhost
     paths: 
-      - '/ip'  
-      - '/api/*'
+      - '/ip'              
+  pds: 
+    host: localhost
+    paths: 
+      - /pds/*
+  ezl: 
+    host: localhost
+    paths:  
+      - /ezl/*
 serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
   pds:
     url: 'https://api.partiudoarsangue.com.br'
+  ezl: 
+    url: 'https://ezl.ezlawyer.com.br'
 policies:
   - basic-auth
   - cors
@@ -23,13 +32,34 @@ policies:
   - oauth2
   - proxy
   - rate-limit
+  - rewrite
+
 pipelines:
-  - name: pds
+  pds:
     apiEndpoints:
-      - api
+      - pds
     policies:
-      - key-auth:
+      - rewrite: 
+        - condition: 
+            name: regexpmatch
+            match: ^/pds/(.*)$
+          action:
+            rewrite: /api/$1
       - proxy:
           - action:
               serviceEndpoint: pds
+              changeOrigin: true
+  ezl:
+    apiEndpoints:
+      - ezl
+    policies:
+      - rewrite: 
+        - condition: 
+            name: regexpmatch
+            match: ^/ezl/(.*)$
+          action:
+            rewrite: /api/v1/$1
+      - proxy:
+          - action:
+              serviceEndpoint: ezl
               changeOrigin: true

@@ -1,0 +1,17 @@
+.container {
+    background: rebeccapurple;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.item {
+  margin: 5px;
+}
+
+.datepicker input {
+    border: 10px solid red;   
+    margin: 0; 
+}

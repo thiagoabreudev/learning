@@ -1,0 +1,21 @@
+$primary-color: rebeccapurple;
+$secundary-color: #fff;
+$container-width: 700px;
+$container-height: 300px;
+$lightcolor: #7FFFD4;
+
+.container {
+    display: flex;
+    align-content: space-between;
+    margin: auto;
+    width: 50%;
+    background:$primary-color;
+    width: $container-width;
+    height: $container-height;
+    color: $secundary-color;
+    .item {
+        margin: 5px;
+        background-color: $lightcolor;
+        width: 100%;
+    }
+}

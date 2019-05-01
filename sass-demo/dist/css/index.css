@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-content: space-between;
+  margin: auto;
+  width: 50%;
+  background: rebeccapurple;
+  width: 700px;
+  height: 300px;
+  color: #fff;
+}
+.container .item {
+  margin: 5px;
+  background-color: #7FFFD4;
+  width: 100%;
+}
+
+/*# sourceMappingURL=index.css.map */
